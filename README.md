@@ -5,17 +5,17 @@
 
 A browser-accessible Ubuntu 18.04 terminal deployed on Railway using [ttyd](https://github.com/tsl0922/ttyd).
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/new/template)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/deploy/ubuntu-1804-terminal-jun26)
 
 ## Description
 
-Deploys an Ubuntu 18.04 LTS container accessible from any browser. Useful for testing legacy software or older package versions.
+Deploys an Ubuntu 18.04 LTS container accessible from any browser. No local installation required. Ideal for testing legacy environments and older package versions. Comes pre-installed with commonly used CLI tools and a persistent volume mounted at `/root`.
 
 ## Environment Variables
 
 | Variable | Description |
 |----------|-------------|
-| `PORT` | Port for ttyd to listen on |
+| `PORT` | Port for ttyd to listen on (default: 7681) |
 | `USERNAME` | Login username for the web terminal |
 | `PASSWORD` | Login password for the web terminal |
 
@@ -26,8 +26,28 @@ Deploys an Ubuntu 18.04 LTS container accessible from any browser. Useful for te
 - 🐧 Ubuntu 18.04 LTS (Bionic Beaver)
 - 🔒 Password-protected web terminal
 - 💻 Neofetch on login
-- 🛠️ Pre-installed: wget, curl, git, python3, pip
 - 💾 Persistent volume mounted at `/root` — files and installs survive restarts
+- 🛠️ Pre-installed tools:
+
+| Category | Tools |
+|---|---|
+| Editors | vim, nano |
+| System | htop, tree, lsof, strace, less, man |
+| Files | unzip, zip |
+| Build | gcc, g++, make, build-essential |
+| Network | ifconfig, ip, ping, dig, openssh-client, telnet, netcat |
+| Data | jq |
+| General | sudo, python3, pip, git, curl, wget, neofetch |
+
+## Installing More Tools
+
+Since the container runs as root, no sudo needed:
+
+```bash
+apt-get install -y <package-name>
+```
+
+> **Note:** Files saved inside `/root` persist across restarts. Packages installed via `apt-get` are stored outside `/root` and will not survive a full redeploy.
 
 ## Use Cases
 

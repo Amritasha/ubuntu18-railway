@@ -27,6 +27,7 @@ Deploys an Ubuntu 18.04 LTS container accessible from any browser. Useful for te
 - 🔒 Password-protected web terminal
 - 💻 Neofetch on login
 - 🛠️ Pre-installed: wget, curl, git, python3, pip
+- 💾 Persistent volume mounted at `/root` — files and installs survive restarts
 
 ## Use Cases
 
